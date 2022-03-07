@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class Topic_01_Check_Environment {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
-// add new comment from other Macbook at office
+// add new comment from other Macbook at officee
 	@BeforeClass
 	public void beforeClass() {
 		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
