@@ -30,7 +30,7 @@ public class Topic_07_WebElement {
 	public void TC_01() {
 		WebElement element = driver.findElement(By.xpath(""));
 		
-		//clear textbox, text area, editable dropdown
+		//clear textbox, text area, editable dropdowna
 		element.clear();
 		
 		//input data into textbox, text area, editable dropdown
