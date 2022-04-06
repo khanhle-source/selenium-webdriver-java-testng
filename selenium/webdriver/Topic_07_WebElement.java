@@ -3,7 +3,9 @@ package webdriver;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -25,64 +27,55 @@ public class Topic_07_WebElement {
 	}
 
 	@Test
-	public void TC_01_RegisterWithEmptyData() {
-		driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		Assert.assertEquals(driver.findElement(By.id("txtFirstname-error")).getText(), "Vui lòng nhập họ tên");
-		Assert.assertEquals(driver.findElement(By.id("txtEmail-error")).getText(), "Vui lòng nhập email");
-		Assert.assertEquals(driver.findElement(By.id("txtCEmail-error")).getText(), "Vui lòng nhập lại địa chỉ email");
-		Assert.assertEquals(driver.findElement(By.id("txtPassword-error")).getText(), "Vui lòng nhập mật khẩu");
-		Assert.assertEquals(driver.findElement(By.id("txtCPassword-error")).getText(), "Vui lòng nhập lại mật khẩu");
-		Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(), "Vui lòng nhập số điện thoại.");
+	public void TC_01() {
+		WebElement element = driver.findElement(By.xpath(""));
+		
+		//clear textbox, text area, editable dropdown
+		element.clear();
+		
+		//input data into textbox, text area, editable dropdown
+		element.sendKeys("");
+		
+		//click button, radio button, checkbox, link, image
+		element.click();
+		
+		//get attribute
+		element.getAttribute("placeholder");
+		
+		//get text 
+		element.getText();
+		
+		//get css value
+		element.getCssValue("");
+		
+		//screenshot element 
+		String base64Image = element.getScreenshotAs(OutputType.BASE64);
+		element.getScreenshotAs(OutputType.BYTES);
+		element.getScreenshotAs(OutputType.FILE);
+		
+		//get tag name of element
+		element = driver.findElement(By.xpath("//input[@id='email']"));
+		element = driver.findElement(By.cssSelector("input[id='email']"));
+		String elementTagname = element.getTagName();
+		
+		//element is display or not
+		Assert.assertTrue(element.isDisplayed());
+		Assert.assertFalse(element.isDisplayed());
+		
+		//element is enable or not
+		Assert.assertTrue(element.isEnabled());
+		Assert.assertFalse(element.isEnabled());
+		
+		//element is selected or not
+		Assert.assertTrue(element.isSelected());
+		Assert.assertFalse(element.isSelected());
+		
+		//ENTER in keyboard 
+		// Only use for form
+		element.submit();
+		
 		
 	}
-
-	@Test
-	public void TC_02_RegisterWithInvalidEmail() {
-		driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-		driver.findElement(By.id("txtFirstname")).sendKeys("Khanh Le");
-		driver.findElement(By.id("txtEmail")).sendKeys("nhukhanhle@gmail.com@gmail");
-		driver.findElement(By.id("txtCEmail")).sendKeys("nhukhanhle1@gmail.com@gmail");
-		driver.findElement(By.id("txtPassword")).sendKeys("123456");
-		driver.findElement(By.id("txtCPassword")).sendKeys("123456");
-		driver.findElement(By.name("txtPhone")).sendKeys("0123456789");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		
-		Assert.assertEquals(driver.findElement(By.id("txtEmail-error")).getText(),"Vui lòng nhập email hợp lệ");
-		
-	}
-	@Test
-	public void TC_03_RegisterWithIncorrectConfirmEmail() {
-		driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-		
-		driver.findElement(By.id("txtEmail")).sendKeys("nhukhanhle@gmail.com");
-		driver.findElement(By.id("txtCEmail")).sendKeys("nhukhanhle1@gmail.com");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		
-		Assert.assertEquals(driver.findElement(By.id("txtCEmail-error")).getText(),"Email nhập lại không đúng");
-	}
-
-	@Test
-	public void TC_04_RegisterWithIncorrectConfirmPass() {
-		driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-		
-		driver.findElement(By.id("txtPassword")).sendKeys("123456");
-		driver.findElement(By.id("txtCPassword")).sendKeys("1234567");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		
-		Assert.assertEquals(driver.findElement(By.id("txtCPassword-error")).getText(), "Mật khẩu bạn nhập không khớp");
-	}
-
-	@Test
-	public void TC_04_RegisterWithIncorrectPhone() {
-		driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-		
-		driver.findElement(By.name("txtPhone")).sendKeys("6789");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		
-		Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(), "Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019");
-	}
-	
 	
 	@AfterClass
 	public void afterClass() {
