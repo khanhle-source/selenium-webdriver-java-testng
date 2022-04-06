@@ -71,7 +71,7 @@ public class Topic_07_WebElement {
 		Assert.assertFalse(element.isSelected());
 		
 		//ENTER in keyboard 
-		// Only use for forma
+		// Only use for formaa
 		element.submit();
 		
 		
