@@ -11,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_02_Css_XPath {
+public class Topic_02_Execise_Register {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 
