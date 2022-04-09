@@ -42,7 +42,7 @@ public class Topic_07_WebElement {
 		//get attribute
 		element.getAttribute("placeholder");
 		
-		//get text of element 1
+		//get text of element 123
 		element.getText();
 		
 		//get css value
