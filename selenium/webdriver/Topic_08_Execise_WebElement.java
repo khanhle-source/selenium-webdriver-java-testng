@@ -33,7 +33,7 @@ public class Topic_08_Execise_WebElement {
 	
 	By errorFirstname = By.xpath("//label[@id='txtFirstname-error']");
 	
-	
+	String fullname, email, cEmail, password, phone;
 	
 	// ham beforeClass se chay truoc TAT CA (ALL) test
 	@BeforeClass
@@ -42,6 +42,17 @@ public class Topic_08_Execise_WebElement {
 		driver = new FirefoxDriver ();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		
+		//chi co the set gia tri cho fullname/email/password/phone o trong class beforeClass boi vi
+		//chi co the khai bao o global va khoi tao trong beforeClass 
+		// hoac khai bao + khoi tao luon o global Eg. String fullname = "le nhu khanh" 
+		// chu khong chap nhan viec khai bao xong roi cham phay ; roi khoi tao o global Eg. String fullname; fullname = "le nhu khanh";
+		// xem them o phut 1h43:  https://www.youtube.com/watch?v=tzeK78lSSEQ&list=PLo1QA-RK2zyryB4iZO_cXYF9OAW5SPUlt&index=19&ab_channel=AutomationFC
+		fullname = "le nhu khanh";
+		email = "nhukhanhle@gmail.com";
+		cEmail = "nhukhanhle@gmail.com";
+		password = "12345678";
+		phone = "0123456789";
 		
 	}
 
