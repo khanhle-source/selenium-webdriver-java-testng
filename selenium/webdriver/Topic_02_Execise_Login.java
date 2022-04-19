@@ -10,12 +10,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Topic_02_Execise_Login {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
+	By username = By.name("uid");
+	
 
+	public int random () {
+		Random rnd = new Random();
+		return rnd.nextInt();
+	}
 	@BeforeClass
 	public void beforeClass() {
 		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
@@ -24,20 +31,15 @@ public class Topic_02_Execise_Login {
 		driver.manage().window().maximize();
 		
 	}
-	public int random () {
-		Random rnd = new Random();
-		return rnd.nextInt();
+	
+	@BeforeMethod
+	public void beforeMethod() {
+		driver.get("https://demo.guru99.com/v4/");
 	}
+	
 
 	@Test
-	public void TC_01_LoginwithEmptyData() {
-		driver.get("http://live.techpanda.org/");
-		driver.findElement(By.xpath("//a[@class=\"skip-link skip-account\"]/span[@class=\"label\"]")).click();
-		driver.findElement(By.xpath("//a[@title=\"Log In\"]")).click();
-		
-		driver.findElement(By.id("email")).sendKeys("");
-		driver.findElement(By.id("pass")).sendKeys("");
-		driver.findElement(By.cssSelector("button#send2")).click();
+	public void TC_01() {
 		
 		Assert.assertEquals(driver.findElement(By.id("advice-required-entry-email")).getText(), "This is a required field.");
 		Assert.assertEquals(driver.findElement(By.cssSelector("div#advice-required-entry-pass")).getText(), "This is a required field.");

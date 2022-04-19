@@ -23,17 +23,16 @@ public class Topic_08_Execise_WebElement {
 	/*WebElement element = driver.findElement(By.xpath("")); */
 	
 	//chi co the khai bao bien By nhu ben duoi
-	By fullnameTextBox = By.id("txtFirstName");
-	By emailTextBox = By.id("txtEmail");
-	By confirmEmailTextBox = By.id("txtcEmail");
-	By passwordTextBox = By.id("txtPassword");
-	By confirmPasswordTextBox = By.id("txtcPassword");
-	By phoneTextBox = By.id("txtPhone");
-	By SubmitButton = By.xpath("//form[@id='frmLogin']//button[text()='ĐĂNG KÝ']");
-	
-	By errorFirstname = By.xpath("//label[@id='txtFirstname-error']");
-	
-	String fullname, email, cEmail, password, phone;
+	By email = By.id("mail");
+	By under18 = By.id("under_18");
+	By education = By.cssSelector("#edu");
+	By job1 = By.id("job1");
+	By job2 = By.id("job2");
+	By interest = By.id("development");
+	By slider1 = By.id("slider-1");
+	By password = By.id("disable_password");
+	By ageDisable = By.id("radio-disabled");
+	By languageJava = By.id("java");
 	
 	// ham beforeClass se chay truoc TAT CA (ALL) test
 	@BeforeClass
@@ -43,44 +42,156 @@ public class Topic_08_Execise_WebElement {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		
-		//chi co the set gia tri cho fullname/email/password/phone o trong class beforeClass boi vi
-		//chi co the khai bao o global va khoi tao trong beforeClass 
-		// hoac khai bao + khoi tao luon o global Eg. String fullname = "le nhu khanh" 
-		// chu khong chap nhan viec khai bao xong roi cham phay ; roi khoi tao o global Eg. String fullname; fullname = "le nhu khanh";
-		// xem them o phut 1h43:  https://www.youtube.com/watch?v=tzeK78lSSEQ&list=PLo1QA-RK2zyryB4iZO_cXYF9OAW5SPUlt&index=19&ab_channel=AutomationFC
-		fullname = "le nhu khanh";
-		email = "nhukhanhle@gmail.com";
-		cEmail = "nhukhanhle@gmail.com";
-		password = "12345678";
-		phone = "0123456789";
+		
 		
 	}
 
 	// ham beforeMethod se chay truoc MOI (EACH) test
 	@BeforeMethod 
 	public void beforeMethod() {
-		driver.get("https://alada.vn/tai-khoan/dang-ky.html");
+		driver.get("https://automationfc.github.io/basic-form/index.html");
+		
 	}
 	
 	@Test
 	public void TC_01() {
-		driver.findElement(fullnameTextBox).sendKeys("");
-		driver.findElement(emailTextBox).sendKeys("");
-		driver.findElement(confirmEmailTextBox).sendKeys("");
-		driver.findElement(confirmPasswordTextBox).sendKeys("");
-		driver.findElement(phoneTextBox).sendKeys("");
-		driver.findElement(SubmitButton).click();
+		Assert.assertTrue(driver.findElement(email).isDisplayed());
+		if (driver.findElement(email).isDisplayed()) {
+			driver.findElement(email).sendKeys("Automation Testing");
+			System.out.println("Email field is displayed");			
+		}
+		else 
+		{
+			System.out.println("Email field is not displayed");	
+		}
 		
-		Assert.assertEquals(driver.findElement(errorFirstname).getText(), "Vui lòng nhập email");
+		if (driver.findElement(under18).isDisplayed()) {
+			driver.findElement(under18).click();
+			System.out.println("under 18 is selected");			
+		}
+		else 
+		{
+			System.out.println("under 18 is not selected");	
+		}
+	}
+	
+	@Test
+	public void TC_02() {
+		//email
+		Assert.assertTrue(driver.findElement(email).isEnabled());
+		if (driver.findElement(email).isEnabled()) {
+			System.out.println ("email is enable");
+		}
+		else 
+		{
+			System.out.println ("email is disable");
+		}
 		
+		//age
+		if (driver.findElement(under18).isEnabled()) {
+			System.out.println ("Age under 18 is enable");
+		}
+		else 
+		{
+			System.out.println ("Age under 18 is disable");
+		}
 		
+		//edu
+		if (driver.findElement(education).isEnabled()) {
+			System.out.println ("education is enable");
+		}
+		else 
+		{
+			System.out.println ("education is disable");
+		}
 		
+		//job1
+		if (driver.findElement(job1).isEnabled()) {
+			System.out.println ("job1 is enable");
+		}
+		else 
+		{
+			System.out.println ("job1 is disable");
+		}
+		
+		//job2
+		if (driver.findElement(job2).isEnabled()) {
+			System.out.println ("job2 is enable");
+		}
+		else 
+		{
+			System.out.println ("job2 is disable");
+		}
+		
+		//interest 
+		if (driver.findElement(interest).isEnabled()) {
+			System.out.println ("interest development is enable");
+		}
+		else 
+		{
+			System.out.println ("interest development is disable");
+		}
+		
+		//slider 1
+		if (driver.findElement(slider1).isEnabled()) {
+			System.out.println ("slider1 is enable");
+		}
+		else 
+		{
+			System.out.println ("slider1 is disable");
+		}
+		
+		//password
+		if (driver.findElement(password).isEnabled()) {
+			System.out.println ("password is enable");
+		}
+		else 
+		{
+			System.out.println ("password is disable");
+		}
+		
+		//age disable 
+		if (driver.findElement(ageDisable).isEnabled()) {
+			System.out.println ("radio button Age is enable");
+		}
+		else 
+		{
+			System.out.println ("Radio button Age is disable");
+		}
 		
 		
 	}
 	
+	@Test
+	public void TC_03() {
+		driver.findElement(under18).click();
+		driver.findElement(languageJava).click();
+		if (driver.findElement(under18).isSelected()) {
+			System.out.println (" Radio button under 18 is selected");
+			
+		}
+		else {
+			System.out.println (" Radio button under 18 is de-selected");
+		}
+		
+		
+	}
+	
+	@Test
+	public void TC_04() {
+		
+	}
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
+	}
+	
+	public void sleepInSecond (long timeInSecond) {
+		try {
+			Thread.sleep(timeInSecond * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
