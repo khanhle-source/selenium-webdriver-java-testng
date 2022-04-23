@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Topic_10_Execise_Textbox_TextArea_Dropdown_CustomDropdown2 {
+public class Topic_10_Execise_Textbox_TextArea2 {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String employeeID;
