@@ -42,7 +42,7 @@ public class Topic_10_Execise_CustomDropdown2 {
 
 	@Test
 	public void TC_01_() {
-
+		// neu attribute khong xuat hien, vao tab Properties de view all attribute 
 	}
 
 
