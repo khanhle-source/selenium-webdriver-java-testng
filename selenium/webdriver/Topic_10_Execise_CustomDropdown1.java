@@ -144,7 +144,7 @@ public class Topic_10_Execise_CustomDropdown1 {
 		}
 	
 	}
-	/*
+	
 	@Test
 	public void TC_01_JQuery() {
 		// open url
@@ -216,7 +216,7 @@ public class Topic_10_Execise_CustomDropdown1 {
 
 		
 	}
-*/
+
 	@Test 
 	public void TC_05_EnterDropdown_react ()
 	{
