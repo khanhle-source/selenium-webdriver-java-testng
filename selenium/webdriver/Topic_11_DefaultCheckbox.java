@@ -19,7 +19,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Topic_11_Button_RadioButton_Checkbox_Alert2 {
+public class Topic_11_DefaultCheckbox {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	JavascriptExecutor jsExecutor;
@@ -87,6 +87,8 @@ public class Topic_11_Button_RadioButton_Checkbox_Alert2 {
 
 	@Test
 	public void TC_01_Default_Checkbox() {
+		// the input co kich thuoc (4 duong ke tao thanh o vuong) thi duoc goi la default 
+		
 		driver.get("https://demos.telerik.com/kendo-ui/checkbox/index");
 		sleepInSecond(3);
 		
