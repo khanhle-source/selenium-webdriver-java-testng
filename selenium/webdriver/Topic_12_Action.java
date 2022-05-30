@@ -122,6 +122,8 @@ public class Topic_12_Action {
 		action.keyUp(control).perform();
 		sleepInSecond(3);
 	}
+	
+	/// khanh testing30 
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
