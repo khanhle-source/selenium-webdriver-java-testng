@@ -1,9 +1,12 @@
 package webdriver;
 
+import static org.testng.Assert.ARRAY_MISMATCH_TEMPLATE;
+
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -99,7 +102,7 @@ public class Topic_12_Action {
 		Assert.assertEquals(backgroundColorHexa.toUpperCase(), "#F39A14");
 	}
 	
-	@Test 
+
 	public void TC_04_ClickAndHold_Random () {
 		driver.get("https://automationfc.github.io/jquery-selectable/");
 		List <WebElement> listNumber = driver.findElements(By.cssSelector("li.ui-state-default.ui-selectee"));
@@ -123,7 +126,47 @@ public class Topic_12_Action {
 		sleepInSecond(3);
 	}
 	
-	/// khanh testing30 
+	
+	public void TC_05_DoubleClick () {
+		driver.get("https://automationfc.github.io/basic-form/index.html");
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[@ondblclick='doubleClickMe()']")));
+		action.doubleClick(driver.findElement(By.xpath("//button[@ondblclick='doubleClickMe()']"))).perform();
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//p[text()='Hello Automation Guys!']")).getText(), "Hello Automation Guys!");
+	}
+	
+	
+	public void TC_06_ContextClick () {
+		driver.get("http://swisnl.github.io/jQuery-contextMenu/demo.html");
+		action.contextClick(driver.findElement(By.xpath("//span[text()='right click me']"))).perform();
+		sleepInSecond(3);
+		action.moveToElement(driver.findElement(By.cssSelector("li.context-menu-icon-quit"))).perform();
+		Assert.assertTrue(driver.findElement(By.cssSelector("li.context-menu-item.context-menu-icon.context-menu-icon-quit.context-menu-visible.context-menu-hover")).isDisplayed());
+		sleepInSecond(3);
+		action.click(driver.findElement(By.cssSelector("li.context-menu-icon-quit"))).perform();
+		
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		
+		Assert.assertFalse(driver.findElement(By.cssSelector("li.context-menu-icon-quit")).isDisplayed());
+		
+	}
+	
+	@Test
+	public void TC_07_DragAndDrop () {
+		driver.get("https://automationfc.github.io/kendo-drag-drop/");
+		WebElement dropTarget = driver.findElement(By.id("droptarget"));
+		WebElement drageanle = driver.findElement(By.id("draggable"));
+		
+		action.dragAndDrop(drageanle, dropTarget).perform();
+		
+		// verify text
+		Assert.assertEquals(dropTarget.getText(), "You did great!");
+		
+		// verify background
+		String backgroundColor = Color.fromString(dropTarget.getCssValue("background-color")).asHex().toUpperCase();
+		Assert.assertEquals(backgroundColor,"#03A9F4");
+	}
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
