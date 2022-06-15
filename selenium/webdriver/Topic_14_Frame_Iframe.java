@@ -50,7 +50,7 @@ public class Topic_14_Frame_Iframe {
 
 	}
 
-	@Test
+
 	public void TC_01_() {
 		driver.get("https://kyna.vn/");
 		sleepInSecond(3);
@@ -87,8 +87,28 @@ public class Topic_14_Frame_Iframe {
 
 	}
 
-	public void TC_02_FixedPopup () {
+	@Test
+	public void TC_02_banking () {
+		driver.get("https://netbanking.hdfcbank.com/netbanking/");
+		sleepInSecond(3);
+		//switch to frame
+		driver.switchTo().frame("login_page");
 
+		//input username
+		By byUsername = By.xpath("//div[text()='Customer ID/ User ID']/following-sibling::div/input");
+		WebElement usrname = driver.findElement(byUsername);
+		usrname.sendKeys("khanhle");
+		sleepInSecond(2);
+
+		//click on continue button
+		driver.findElement(By.cssSelector("a.btn-primary.login-btn")).click();
+
+		//verify password field is display
+		Assert.assertTrue(driver.findElement(By.id("fldPasswordDispId")).isDisplayed());
+		sleepInSecond(2);
+
+		//switch to main screen
+		driver.switchTo().defaultContent();
 	}
 
 
