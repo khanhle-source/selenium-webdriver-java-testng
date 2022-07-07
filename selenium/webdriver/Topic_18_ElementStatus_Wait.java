@@ -18,7 +18,7 @@ import java.io.File;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Topic_18_Wait_ElementStatus {
+public class Topic_18_ElementStatus_Wait {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	WebDriverWait explicitWait;
