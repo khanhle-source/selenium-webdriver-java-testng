@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite parallel="false" name = "Facebook">
+    <parameter name="server" value="LIVE" />
+    <test name="Run on Chrome browser">
+        <parameter name="browser" value="chrome" />
+          <classes>
+                <class name = "testng.tech.Topic_06_Multi_Server"> </class>
+          </classes>
+    </test>
+
+    <test name="Run on Firefox browser">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name = "testng.tech.Topic_06_Multi_Server"> </class>
+        </classes>
+    </test>
+</suite>

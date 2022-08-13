@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite parallel="false" name = "Facebook">
+    <test name="Run on Chrome browser">
+        <parameter name="browser" value="chrome" />
+      <classes>
+            <class name = "testng.tech.Topic_05_Multi_Browser"> </class>
+      </classes>
+    </test>
+
+    <test name="Run on Firefox browser">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name = "testng.tech.Topic_05_Multi_Browser"> </class>
+        </classes>
+    </test>
+</suite>

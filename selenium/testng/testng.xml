@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite parallel="false" name = "Facebook">
+    <groups>
+        <run>
+            <include name="admin" />
+        </run>
+    </groups>
+
+    <test name="Run on Chrome browser">
+        <!-- <classes>
+            <class name = "testng.tech.Topic_01_Annotation"> </class>
+        </classes> -->
+
+        <packages>
+            <package name="testng.admin" />
+        </packages>
+    </test>
+</suite>
