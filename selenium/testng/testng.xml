@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <suite parallel="false" name = "Facebook">
+    <listeners>
+        <listener class-name="testng.listener.Report_TestNG"></listener>
+    </listeners>
     <groups>
         <run>
             <include name="admin" />
         </run>
     </groups>
+
+    <listener>
+        <listener class-name="listener.Report_TestNG" />
+    </listener>
+    <test name="Run listener">
+    <classes>
+        <class name = "testng.listener.Register"> </class>
+    </classes>
+    </test>
 
     <test name="Run on Chrome browser">
         <!-- <classes>
